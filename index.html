@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interaktives Physiklabor: Induktion und Wechselspannung mit Stabmagnet, Spule, analogem Voltmeter und U(t)-Diagramm entdecken.">
+<title>Generator · Physiklabor</title>
+<style>
+:root{--paper:#f6f5ef;--card:#fffefa;--ink:#203d36;--muted:#64756c;--line:#d8dfd4;--green:#31644f;--lime:#dbeac1;--orange:#c45c31;--blue:#4d7890;--red:#bd5544;--radius:16px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button,a,input,textarea,summary,select{-webkit-tap-highlight-color:transparent}button,summary{cursor:pointer}button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:10px 16px;font-weight:600;line-height:1.4}button:hover{border-color:var(--green);background:#f0f3e9}button:disabled{opacity:.45;cursor:default}button.primary{background:var(--green);border-color:var(--green);color:white}button.primary:hover{background:#244c3c}button.small{font-size:13px;padding:8px 12px}:focus-visible{outline:3px solid var(--orange);outline-offset:4px}a{color:var(--green);text-underline-offset:3px}main,.top-inner,.footer-inner{width:min(1180px,calc(100% - 48px));margin:auto}.top{border-bottom:1px solid var(--line)}.top-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:750;letter-spacing:-.5px;font-size:19px;display:flex;align-items:center;gap:11px}.brand-icon{display:grid;place-items:center;width:34px;height:34px;background:var(--green);color:var(--lime);border-radius:9px;font:26px Georgia,serif}.top nav{display:flex;gap:24px;font-size:13px}.top a{text-decoration:none}.hero{padding:54px 0 33px;display:flex;justify-content:space-between;gap:40px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:750;text-transform:uppercase;color:var(--green)}h1{font:normal clamp(34px,4.3vw,58px)/1.12 Georgia,"Times New Roman",serif;letter-spacing:-1.6px;margin:15px 0 17px}h1 em{font-style:normal;color:var(--green)}.intro{max-width:690px;color:var(--muted);font-size:16px;margin:0}.chapter{flex-shrink:0;border:1px solid var(--line);border-radius:50%;width:106px;height:106px;display:flex;align-items:center;justify-content:center;flex-direction:column;font:italic 36px Georgia,serif;color:var(--green)}.chapter small{font:9px system-ui;letter-spacing:1px;margin-top:7px}.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:24px}.tab{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;padding:13px 19px;margin-bottom:-1px;font-size:14px}.tab[aria-selected=true]{color:var(--green);border-bottom-color:var(--green)}.tab span{font:12px ui-monospace,monospace;opacity:.65;margin-right:10px}.experiment-intro{display:flex;gap:24px;align-items:start;justify-content:space-between;margin-bottom:18px}h2{font:normal 28px/1.25 Georgia,serif;letter-spacing:-.4px;margin:0 0 10px}.experiment-intro p{margin:0;color:var(--muted);max-width:840px;font-size:14px}.tag{font-size:10px;font-weight:650;letter-spacing:1px;border:1px solid var(--line);border-radius:30px;padding:5px 11px;white-space:nowrap}.lab-grid{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(0,1fr);gap:18px}.panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden;min-width:0}.panel-top{display:flex;align-items:center;justify-content:space-between;padding:17px 20px 0;gap:12px}.panel-title{font-size:11px;text-transform:uppercase;letter-spacing:1.4px;font-weight:700}.indicator{font-size:11px;display:flex;align-items:center;gap:6px;color:var(--muted)}.dot{width:6px;height:6px;display:inline-block;border-radius:50%;background:#a4b29e}.dot.on{background:var(--green);box-shadow:0 0 0 3px #e6eedb}.apparatus{width:100%;display:block;aspect-ratio:600/350}.apparatus text,.chart text,.sketch text{font-family:system-ui,sans-serif;fill:var(--muted);font-size:12px}.apparatus .pole{fill:white;font-size:17px;font-weight:700}.instrument{display:grid;grid-template-columns:1fr 1fr;align-items:center;border-top:1px solid var(--line);margin:0 20px;gap:12px}.meter{width:100%;max-height:153px}.meter text{font:11px system-ui;fill:var(--muted)}.meter .meter-unit{font:24px Georgia,serif;fill:var(--ink)}.readout small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase}.readout output{display:block;font:29px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-1px}.readout p{font-size:11px;color:var(--muted);margin:2px 0}.chart{width:100%;display:block;margin:13px 0 0}.chart-legend{display:flex;flex-wrap:wrap;gap:15px;padding:0 20px 15px;font-size:11px;color:var(--muted)}.chart-legend span{display:flex;align-items:center;gap:6px}.swatch{height:2px;width:19px;background:var(--orange)}.swatch.flux{background:var(--green)}.live-note{border-top:1px solid var(--line);margin:0 20px;padding:15px 0 18px;min-height:109px}.live-note .label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--green);font-weight:700}.live-note p{font-size:13px;margin:5px 0;color:var(--muted)}.control-panel{margin-top:18px;padding:19px 22px;display:grid;grid-template-columns:auto 1fr 1fr;align-items:start;gap:27px}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.control label,.control .control-label{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:650;margin:0 0 8px}.control output{color:var(--green);font:12px ui-monospace,monospace}.control input[type=range]{width:100%;accent-color:var(--green);cursor:pointer;margin:5px 0}.control small{font-size:11px;color:var(--muted);display:block}.options{grid-column:1/-1;border-top:1px solid var(--line);padding-top:13px;display:flex;gap:20px;flex-wrap:wrap;font-size:12px;align-items:center}.options label{display:flex;align-items:center;gap:7px}.options input{accent-color:var(--green);width:15px;height:15px}.options .reset{margin-left:auto}.model{margin:15px 0 0;font-size:13px;color:var(--muted)}summary{padding:8px 0;font-weight:400;color:var(--ink)}summary::marker{color:var(--green)}details p{margin:9px 0}.model-body{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:10px 0 6px}.model-body h3{font-size:13px;margin:0 0 8px}.section{margin-top:43px;padding-top:32px;border-top:1px solid var(--line)}.section-heading{display:flex;align-items:start;justify-content:space-between;gap:20px;margin-bottom:22px}.section-heading .eyebrow{margin-bottom:9px}.section-heading p{font-size:14px;color:var(--muted);margin:0;max-width:670px}.learn-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:25px}.explanation{font-size:14px}.explanation p{margin:0 0 13px}.formula{background:#edf1e5;border-left:3px solid var(--green);padding:18px 22px;margin:19px 0;font:23px Georgia,serif}.formula small{display:block;font:12px/1.65 system-ui;margin-top:10px;color:var(--muted)}.rule{font-size:14px;font-weight:600}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field-card{border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--card);font-size:11px}.field-card svg{display:block;width:100%;height:105px}.field-card strong{font-size:12px;display:block}.field-card p{margin:4px 0;color:var(--muted)}.field-card .state-label{display:flex;justify-content:space-between;color:var(--green);font:11px ui-monospace,monospace}.sketch-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}.sketch{width:100%;display:block;touch-action:none;cursor:crosshair}.sketch-tools{padding:12px 17px;display:flex;flex-wrap:wrap;gap:7px;border-top:1px solid var(--line)}.note-label{display:block;font-size:13px;font-weight:650;margin-bottom:8px}textarea{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:12px;width:100%;min-height:140px;resize:vertical;color:var(--ink);font-size:14px}.help{font-size:12px;color:var(--muted);margin:8px 0}.observation-prompts{font-size:13px;margin:0 0 14px;padding-left:18px;color:var(--muted)}.task-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.task{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--card);font-size:13px}.task-num{font:italic 28px Georgia,serif;color:var(--green);margin-bottom:16px}.task h3{font:22px/1.25 Georgia,serif;margin:0 0 12px}.task>p{min-height:65px;color:var(--muted);margin-bottom:16px}.task textarea{min-height:105px;font-size:13px;background:var(--paper)}.task details{margin-top:9px;border-top:1px solid var(--line)}.task .answer{padding:5px 0}.task .answer p{margin-bottom:13px}.chain{display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-size:12px;font-weight:650;color:var(--green);margin:12px 0}.rectifier svg{width:100%;height:60px;display:block}.rectifier{margin-top:12px}.rectifier label{font-size:11px}.rectifier select{max-width:100%;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font-size:12px}.technical{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.tech-figure{width:100%;background:#edf1e5;border:1px solid var(--line);border-radius:var(--radius)}.technical p{font-size:14px}.technical h3{font-size:14px;margin:16px 0 5px}.summary-section{font-size:14px}.summary-section>summary{font-size:19px;padding:10px 0}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:15px 0}.summary-grid h3{font-size:13px}.summary-grid ul{padding-left:19px}.sources{font-size:12px;margin-top:24px;color:var(--muted)}.sources ol{padding-left:20px}.sources li{margin:8px 0}.footer{margin-top:38px;border-top:1px solid var(--line);padding:21px 0 28px;color:var(--muted);font-size:11px}.footer-inner{display:flex;justify-content:space-between;gap:20px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}[hidden]{display:none!important}.print-value{display:none}
+.chapter{font-size:27px;white-space:nowrap}.pole{fill:white;font:700 17px system-ui}.field-card .pole{font-size:24px}
+.tab:hover{border-bottom-color:transparent;background:#eef1e7}.tab[aria-selected=true]:hover{border-bottom-color:var(--green)}
+@media(min-width:1500px){.hero{padding-top:65px}}@media(max-width:900px){.lab-grid{grid-template-columns:1fr 1fr}.control-panel{grid-template-columns:1fr 1fr}.control-panel>.actions{grid-column:1/-1}.task-grid{grid-template-columns:1fr}.task>p{min-height:0}.technical{gap:20px}.readout output{font-size:23px}.instrument{gap:0;margin:0 10px}.panel-top{padding-left:15px;padding-right:15px}}
+@media(max-width:660px){main,.top-inner,.footer-inner{width:calc(100% - 30px)}.top-inner{min-height:62px}.top nav{gap:13px;font-size:11px}.brand{font-size:16px}.brand-icon{width:29px;height:29px}.hero{padding:32px 0 27px;gap:0}.chapter{display:none}h1{font-size:40px}.intro{font-size:14px}.lab-grid,.learn-grid,.sketch-grid,.technical,.summary-grid,.model-body{grid-template-columns:1fr}.tab{padding:12px 9px;font-size:12px}.tab span{margin-right:5px}.experiment-intro .tag{display:none}.experiment-intro h2{font-size:25px}.control-panel{padding:16px;gap:20px}.control-panel>.control{grid-column:1/-1}.options{gap:13px}.options .reset{margin-left:0}.section{margin-top:30px;padding-top:25px}.section-heading{flex-direction:column}.section-heading h2{font-size:26px}.footer-inner{flex-direction:column;gap:7px}.instrument{margin:0 20px}.readout output{font-size:29px}.top a:last-child{display:none}.task{padding:20px}.sketch-tools button{font-size:11px}.field-card svg{height:95px}}
+@media(max-width:360px){.top nav a:nth-child(2){display:none}.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.tab{padding:10px 3px;font-size:11px;min-width:0}.tab span{display:block;margin:0 0 4px}.instrument{margin:0 10px}.readout output{font-size:24px}}
+:root{--text-body:16px;--text-small:14px;--green:#176958;--pale:#eaf3ee}
+body{font-family:Arial,Helvetica,sans-serif}
+main,.top-inner,.footer-inner{width:min(1128px,calc(100% - 64px))}
+.top{background:#fff}.top-inner{min-height:76px}
+.brand{font-size:17px;font-weight:700;letter-spacing:-.4px;white-space:nowrap}
+.brand svg{width:32px;height:32px;flex-shrink:0}
+.brand span{font-weight:400;color:var(--muted);margin-left:6px}
+.top-motto{font-size:14px;letter-spacing:.8px;text-transform:uppercase;font-weight:700}
+.hero{padding:42px 0 29px}h1{font-size:46px;letter-spacing:-1.8px;margin:0 0 14px}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-bottom:30px}
+.tabs .tab{display:flex;align-items:center;gap:13px;padding:16px 18px;text-align:left;color:var(--muted);min-width:0;margin:0;background:transparent}
+.tabs .tab[aria-selected=true]{background:var(--pale);color:var(--green);border-bottom-color:var(--green)}
+.tabs .tab:hover{background:var(--pale)}
+.tabs .tab span{font:inherit;opacity:1;margin:0}
+.tabs .tabnum{width:30px;height:30px;display:grid;place-items:center;border:1px solid currentColor;border-radius:50%;font-size:14px;flex-shrink:0}
+.tabtext{min-width:0;overflow-wrap:anywhere}.tabtext small{display:block;font-size:14px;font-weight:400;margin-bottom:4px}.tabtext strong{display:block;font-size:14px}
+.intro,.experiment-intro p,.section-heading p,.explanation,.technical p,.task,.task textarea,textarea,.observation-prompts,.live-note p,.rule,.summary-section{font-size:var(--text-body)}
+.eyebrow,.tag,.panel-title,.indicator,.readout small,.readout p,.chart-legend,.live-note .label,.control label,.control output,.control small,.options,.model,.model-body h3,.formula small,.field-card,.field-card strong,.field-card .state-label,.note-label,.help,.chain,.rectifier label,.rectifier select,.sources,.footer,button.small,.sketch-tools button,.summary-grid h3{font-size:var(--text-small)}
+.eyebrow,.panel-title,.readout small{letter-spacing:.8px}.panel-top{flex-wrap:wrap}.control label{flex-wrap:wrap}.technical h3{font-size:18px}
+button,select{min-height:44px}.instrument{grid-template-columns:minmax(160px,1fr) minmax(0,1fr)}
+.meter{min-height:155px}.meter text{font-size:15px}.apparatus text,.chart text,.sketch text{font-size:16px}
+.diagram-scroll{overflow-x:auto;overscroll-behavior-x:contain}.diagram-scroll>.apparatus{min-width:540px}.diagram-scroll>.chart{min-width:480px}.diagram-scroll>.tech-figure{min-width:520px}.tech-figure text{font-size:14px}
+#technik{margin-top:0;padding-top:0;border-top:0}
+.cloze-details{margin-top:24px;padding-top:0;font-size:16px}.cloze-details>summary{font-weight:400;background:transparent}.cloze-details>p{color:var(--muted);font-size:14px}#cloze p{line-height:2.5}#cloze select{max-width:100%;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px;margin:0 4px}#cloze select[aria-invalid=true]{border:2px solid var(--red)}#cloze select[data-correct=true]{border:2px solid var(--green)}
+@media(max-width:850px){main,.top-inner,.footer-inner{width:calc(100% - 44px)}.top-inner{flex-wrap:wrap;padding-top:14px;padding-bottom:14px;gap:8px}.tabs .tab{padding:13px 9px;gap:9px}.hero{padding-top:30px}h1{font-size:38px}.lab-grid{grid-template-columns:1fr}}
+@media(max-width:620px){main,.top-inner,.footer-inner{width:calc(100% - 36px)}.top-inner{min-height:65px}.brand{font-size:15px}.top-motto{font-size:14px}.hero{padding:27px 0 20px}h1{font-size:36px}.tabs{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:24px}.tabs .tab{align-items:flex-start;padding:13px 8px;flex-direction:column}.tabs .tab:last-child{grid-column:1/-1;flex-direction:row;align-items:center}.instrument{grid-template-columns:1fr;margin:0 16px;padding-bottom:16px}.meter{width:250px;max-width:100%;justify-self:center}.readout{text-align:center}.field-grid{grid-template-columns:1fr}.field-card svg{height:120px}}
+@media print{#experiment[hidden],#technology[hidden]{display:block!important}.diagram-scroll{overflow:visible}.diagram-scroll>.apparatus,.diagram-scroll>.chart,.diagram-scroll>.tech-figure{min-width:0}.top{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{body{background:white;font-size:11pt}main,.footer-inner{width:100%}.top,.chapter,.tabs,.control-panel,.sketch-tools,#print-all,.sources,.indicator{display:none}.hero{padding:0 0 20px}h1{font-size:31pt}.section{margin-top:20px;padding-top:15px}.lab-grid{grid-template-columns:1fr 1fr}.task-grid{display:block}.task{margin-bottom:15px;break-inside:avoid}.panel,.field-grid,.technical{break-inside:avoid}textarea{display:none}.print-value{display:block;white-space:pre-wrap;border-bottom:1px solid #aaa;min-height:38px}.task details:not([open])>*:not(summary),details:not([open])>div{display:block!important}.footer{margin-top:15px}button{display:none}.section-heading{margin-bottom:13px}a{color:inherit;text-decoration:none}}
+.footer-inner{flex-wrap:wrap}.footer-actions{display:flex;gap:15px;align-items:center;flex-wrap:wrap}.textbutton{border:0;padding:0;min-height:44px;background:none;font-size:var(--text-small);text-decoration:underline;color:var(--muted);font-weight:400}.textbutton:hover{background:none;color:var(--green)}
+.tech-demo{min-width:0}.tech-controls{margin-top:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tech-controls .help{flex:1;min-width:180px}.tech-figure #tech-voltage{font-size:20px;font-variant-numeric:tabular-nums}.tech-figure #tech-rotor text{fill:white;font-weight:700}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><div class="brand"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#176958"/><path d="M7 18h4c-1-14 5-14 5 0s-6 14-5 0h7c-1-14 5-14 5 0s-6 14-5 0h11" stroke="white" stroke-width="1.5"/></svg>Physiklabor <span>/ Generator</span></div><span class="top-motto">Entdecken. Verändern. Verstehen.</span></div></header>
+<main>
+<section class="hero"><div><h1>Aus Bewegung wird Spannung.</h1><p class="intro">Ein Magnet, eine Spule und eine entscheidende Veränderung.<br>Entdecke, wie Induktion entsteht – und warum ein Generator Wechselspannung erzeugt.</p></div></section>
+<section id="labor" aria-label="Interaktives Experiment">
+<div class="tabs" role="tablist" aria-label="Lernbereich auswählen"><button class="tab" id="tab-0" role="tab" aria-selected="true" aria-controls="experiment" tabindex="0"><span class="tabnum">01</span><span class="tabtext"><small>Experiment: Magnet bewegen</small><strong>Spannungsmessung</strong></span></button><button class="tab" id="tab-1" role="tab" aria-selected="false" aria-controls="experiment" tabindex="-1"><span class="tabnum">02</span><span class="tabtext"><small>Experiment: Magnet drehen</small><strong>Wechselspannung</strong></span></button><button class="tab" id="tab-2" role="tab" aria-selected="false" aria-controls="technology" tabindex="-1"><span class="tabnum">03</span><span class="tabtext"><small>Prinzip eines Generators</small><strong>Technik &amp; Alltag</strong></span></button></div>
+<div id="experiment" role="tabpanel" aria-labelledby="tab-0">
+<div class="experiment-intro"><div><h2 id="experiment-title">01 · Experiment: Den Magneten hin und her bewegen</h2><p id="experiment-description">Bewege den Stabmagneten mehrfach in die Spule hinein und wieder heraus. Beobachte den Zeiger: Wann schlägt er aus, wann wechselt er die Richtung?</p></div><span class="tag">VIRTUELLES EXPERIMENT</span></div>
+<div class="lab-grid">
+<div class="panel"><div class="panel-top"><span class="panel-title">Versuchsaufbau</span><span class="indicator"><i class="dot" id="motion-dot"></i><span id="motion-status">Magnet steht</span></span></div>
+<svg id="apparatus" class="apparatus" viewBox="0 0 600 350" role="img" aria-label="Stabmagnet und feststehende Spule, über zwei Leitungen mit dem Voltmeter verbunden">
+<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r=".8" fill="#d9e0d4"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#77927a" stroke-width="1.6"/></marker><clipPath id="apparatus-clip"><rect x="5" y="5" width="590" height="280"/></clipPath></defs>
+<rect x="15" y="15" width="570" height="270" rx="10" fill="url(#dots)"/>
+<path d="M310 221V304H260V325M422 221V304H340V325" stroke="#63796d" stroke-width="2" fill="none"/>
+<circle cx="260" cy="325" r="4" fill="#bd5544"/><circle cx="340" cy="325" r="4" fill="#4d7890"/><text x="300" y="344" text-anchor="middle">zum Spannungsmesser</text>
+<g id="coil-back" fill="none" stroke="#b8885f" stroke-width="5" opacity=".55"></g>
+<g clip-path="url(#apparatus-clip)"><g id="field-lines" fill="none" stroke="#77927a" stroke-width="1.1" opacity=".65"></g>
+<g id="magnet"><rect x="-57" y="-19" width="114" height="38" rx="5" fill="#4d7890"/><path d="M0-19H52Q57-19 57-14V14Q57 19 52 19H0Z" fill="#bd5544"/><path d="M0-19V19" stroke="#fffefa" stroke-opacity=".7"/><text class="pole" x="-30" y="6" text-anchor="middle">S</text><text class="pole" x="30" y="6" text-anchor="middle">N</text></g></g>
+<g id="coil-front" fill="none" stroke="#b47845" stroke-width="5"></g>
+<path d="M300 228H430M310 228V241H420V228" stroke="#a7b5a3" stroke-width="2" fill="#e9eee1"/>
+<text x="366" y="264" text-anchor="middle">Spule · 500 Windungen</text>
+<g id="translation-hint"><path d="M95 213H231" fill="none" stroke="#77927a" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text x="163" y="237" text-anchor="middle">hinein &amp; heraus</text></g>
+<g id="rotation-hint" hidden><circle cx="168" cy="145" r="4" fill="#203d36"/><path d="M140 224A84 84 0 0 0 251 143" stroke="#77927a" fill="none" marker-end="url(#arrow)"/><text x="164" y="263" text-anchor="middle">rotierender Magnet</text></g>
+</svg>
+<div class="instrument"><svg class="meter" viewBox="0 0 250 155" role="img" aria-label="Analoges Voltmeter mit Nullpunkt in der Mitte, Messbereich minus 5 bis plus 5 Volt"><path d="M28 116A98 98 0 0 1 222 116" stroke="#d8dfd4" fill="none" stroke-width="2"/><g id="meter-ticks"></g><text x="125" y="93" text-anchor="middle" class="meter-unit">V</text><path id="needle" d="M125 126L125 35" stroke="#c45c31" stroke-width="2.5" stroke-linecap="round"/><circle cx="125" cy="126" r="6" fill="#203d36"/><text x="125" y="148" text-anchor="middle">− / + · Momentanwert</text></svg><div class="readout"><small>Induktionsspannung</small><output id="voltage">0,00 V</output><p id="meter-note">Der Magnet steht still.</p><p>Φ = <span id="flux-value">0,14 mWb</span></p></div></div>
+</div>
+<div class="panel"><div class="panel-top"><span class="panel-title">Spannung über Zeit</span><span class="tag">U(t)</span></div>
+<svg class="chart" id="chart" viewBox="0 0 520 300" role="img" aria-label="Live-Diagramm der Induktionsspannung von minus 5 bis plus 5 Volt über die letzten zehn Sekunden"><defs><clipPath id="plot-clip"><rect x="52" y="30" width="440" height="240"/></clipPath></defs><g id="chart-grid"></g><path d="M52 30V270M52 150H492" stroke="#899789" fill="none"/><text x="18" y="18">U / V</text><text x="490" y="294" text-anchor="end">t / s</text><g clip-path="url(#plot-clip)"><path id="flux-trace" stroke="#62846b" stroke-width="1.6" stroke-dasharray="5 4" fill="none" hidden/><path id="trace" fill="none" stroke="#c45c31" stroke-width="2.4" stroke-linejoin="round"/><circle id="trace-dot" cx="52" cy="150" r="3.5" fill="#c45c31"/></g></svg>
+<div class="chart-legend"><span><i class="swatch"></i>Induktionsspannung U</span><span id="flux-legend" hidden><i class="swatch flux"></i>Φ · separat normiert, ±1 mWb</span><span>Fenster: 10 s · Modellwerte</span></div>
+<div class="live-note"><span class="label">Genau hinschauen</span><p id="live-tip">Nicht das Magnetfeld allein erzeugt eine Spannung, sondern seine Änderung. Halte den Magneten an: Was zeigt das Messgerät dann?</p></div>
+</div></div>
+<div class="panel control-panel"><div class="actions"><button id="play" class="primary">Bewegung starten</button><button id="clear-chart" class="small" title="Zeit und aufgezeichnete Messwerte löschen">Neue Messung</button></div><div class="control"><label for="speed">Bewegungsfrequenz <output id="speed-value">0,50 Hz</output></label><input id="speed" type="range" min="0.15" max="1" step="0.05" value="0.5"><small>Langsam beobachten, dann schneller bewegen.</small></div><div class="control"><label for="manual"><span id="manual-label">Magnet von Hand bewegen</span><output id="position-value">0 %</output></label><input id="manual" type="range" min="0" max="100" step="1" value="0" aria-describedby="manual-help"><small id="manual-help">0 %: außerhalb · 100 %: eingetaucht. Auch mit Pfeiltasten.</small></div><div class="options"><label><input type="checkbox" id="show-field" checked>Feldlinien anzeigen</label><label><input type="checkbox" id="show-flux">Magnetischen Fluss einblenden</label><button id="reset" class="small reset">Alles zurücksetzen</button></div></div>
+<div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+<details class="model"><summary>Was zeigt das Modell – und was nicht?</summary><div class="model-body"><div><h3>Das Prinzip ist entscheidend</h3><p>Berechnet wird U = −N · ΔΦ/Δt mit N = 500. Bei der Hin-und-Herbewegung nimmt der Fluss beim Eintauchen zu; das gewählte glatte Flussprofil ist Φ(x) = 1 mWb · exp[−2(1−x)²], mit der normierten Position x von 0 bis 1. Bei der Rotation gilt idealisiert Φ = Φ̂ · cos(θ). Die orange Kurve und der Zeiger zeigen denselben Momentanwert.</p><p>Das Vorzeichen hängt von der gewählten Anschlussrichtung ab. Bei vertauschten Messleitungen würde die Kurve an der Zeitachse gespiegelt.</p></div><div><h3>Bewusste Vereinfachungen</h3><p>Feldlinien sind qualitative Bilder eines Magneten, keine vermessenen Felder. Der rotierende Magnet bleibt vor der Spulenöffnung und dreht sich in der Bildebene, nicht um seine Längsachse. Das reale Feld kann zu einer nicht sinusförmigen Spannung führen.</p><p>Spulengröße, räumliche Feldverteilung, Zeigerträgheit und elektrische Belastung werden nicht vollständig simuliert. Die Spannungen sind illustrative Modellwerte, keine Vorhersage für einen konkreten Aufbau. Die Simulation läuft nur im sichtbaren Browserfenster.</p></div></div></details>
+</div></section>
+<section id="verstehen" class="section"><div class="section-heading"><div><div class="eyebrow">A / Beobachten &amp; erklären</div><h2 id="learn-title">Eine Änderung macht den Unterschied.</h2></div></div><div class="learn-grid"><div class="explanation"><div id="explain-translation"><p>Beim <strong>Eintauchen</strong> des Stabmagneten wächst der magnetische Fluss durch die Spule. Beim <strong>Herausziehen</strong> nimmt er wieder ab. Diese entgegengesetzten Änderungen erzeugen Spannungen mit entgegengesetztem Vorzeichen.</p><p>Bewegst du den Magneten wiederholt hin und her, pendelt auch der Zeiger hin und her: Es entsteht <strong>Wechselspannung</strong>. Eine gleichmäßig wiederholte Bewegung erzeugt einen regelmäßig wiederkehrenden Verlauf – aber nicht zwangsläufig eine reine Sinuskurve.</p></div><div id="explain-rotation" hidden><p>Beim Drehen zeigen abwechselnd Nord- und Südpol zur Spule. Dadurch ändern sich Stärke und Richtung des magnetischen Flusses. Auch ohne Hin-und-Herbewegung entsteht <strong>Wechselspannung</strong>.</p><p>Bei gleichmäßiger Drehung ist die Spannung im idealisierten Modell sinusförmig. Das Feld muss nicht besonders stark sein, sondern sich besonders schnell <em>ändern</em>: Bei maximalem oder minimalem Fluss ist die Spannung gerade null.</p></div><div class="formula">U<sub>ind</sub> = −N · ΔΦ / Δt<small>N: Windungszahl · Φ: magnetischer Fluss durch eine Windung<br>Das Minuszeichen beschreibt die Richtung der Induktionswirkung (Lenz’sche Regel).</small></div><p class="rule">Merke: Ohne Flussänderung keine Induktionsspannung.</p></div><div><div class="field-grid" id="field-cards"></div><p class="help" id="field-caption">Feldlinien außen: vom Nordpol (N, rot) zum Südpol (S, blau). Die Bilder zeigen ausgewählte Zustände des Experiments.</p></div></div></section>
+<section class="section" id="skizzieren"><div class="section-heading"><div><div class="eyebrow">B / Selbst festhalten</div><h2>Wie sieht deine Wechselspannung aus?</h2><p>Skizziere ein U(t)-Diagramm mit mehreren positiven und negativen Ausschlägen. Zeichne mit Maus oder Finger. Vergleiche anschließend mit der Beispielkurve.</p></div></div><div class="sketch-grid"><div class="panel"><svg id="sketch" class="sketch" viewBox="0 0 600 260" aria-label="Zeichenfläche für deine Spannung-Zeit-Skizze; alternativ Beobachtung im Textfeld beschreiben"><defs><pattern id="sketch-grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#e3e7dc" stroke-width="1"/></pattern><clipPath id="sketch-clip"><rect x="45" y="25" width="530" height="210"/></clipPath></defs><rect x="45" y="25" width="530" height="210" fill="url(#sketch-grid)"/><path d="M45 25V235M45 130H575" fill="none" stroke="#899789"/><text x="18" y="25">U</text><text x="580" y="148">t</text><text x="27" y="134">0</text><text x="24" y="64">+</text><text x="24" y="211">−</text><g clip-path="url(#sketch-clip)"><path id="example-curve" fill="none" stroke="#bd5544" stroke-width="2" stroke-dasharray="7 4" hidden/><g id="strokes" fill="none" stroke="#31644f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></g></g></svg><div class="sketch-tools"><button class="small" id="undo">Letzten Strich entfernen</button><button class="small" id="clear-sketch">Skizze löschen</button><button class="small" id="example">Beispielkurve einblenden</button></div></div><div><ul class="observation-prompts"><li>Was geschieht beim Richtungswechsel?</li><li>Wie verändert eine höhere Geschwindigkeit die Kurve?</li><li>Was passiert, wenn der Magnet stillsteht?</li></ul><label class="note-label" for="observation">Deine Beobachtung</label><textarea id="observation" placeholder="Ich beobachte … Das lässt sich damit erklären, dass …"></textarea><p class="help" id="save-status">Notizen und Skizzen bleiben in diesem Browser gespeichert.</p><p class="help" id="example-note">Die Beispielkurve zeigt zwei gleichmäßige Bewegungszyklen. Sie ist eine Orientierung, keine Bewertung deiner Zeichnung.</p></div></div></section>
+<div id="technology-intro" class="experiment-intro"><div><h2>03 · Generatoren im Alltag</h2><p>Generatoren begegnen uns zum Beispiel als Fahrraddynamo, als Lichtmaschine im Auto oder im Notstromaggregat. Wechselstromgeneratoren sind wichtig für die Energieversorgung: Sie wandeln Bewegungsenergie in elektrische Energie um. Die dafür nötige Drehbewegung wird bei Wasser- und Windrädern, Turbinen in Kraftwerken oder Verbrennungsmotoren auf unterschiedliche Weise erzeugt.</p></div></div>
+<section class="section" id="technik"><div class="section-heading"><div><div class="eyebrow">A / Vom Versuch zur Technik</div><h2>Das Prinzip eines Generators</h2></div></div><div class="technical"><div class="tech-demo"><svg class="tech-figure" viewBox="0 0 520 310" role="img" aria-label="Schematischer Innenpolgenerator: rotierender Elektromagnet im feststehenden Stator, Gleichspannung für den Rotor und Wechselspannung am Stator"><defs><marker id="tech-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="#31644f" stroke-width="2"/></marker></defs><circle cx="215" cy="150" r="100" fill="none" stroke="#9cab97" stroke-width="23"/><circle cx="215" cy="150" r="75" fill="none" stroke="#9cab97" stroke-dasharray="4 5"/><g stroke="#b47845" stroke-width="5" fill="none"><path d="M117 108L140 117M113 119L136 128M110 131L133 140M109 144L132 153M110 157L133 166M113 170L136 179M117 182L140 191M290 108L313 117M294 120L317 129M298 132L321 141M299 145L322 154M298 158L321 167M294 170L317 179M290 182L313 191"/></g><g id="tech-rotor" transform="translate(215 150) rotate(-30)"><rect x="-61" y="-22" width="122" height="44" rx="5" fill="#4d7890"/><path d="M0-22H57Q61-22 61-18V18Q61 22 57 22H0Z" fill="#bd5544"/><g stroke="#ecd0a6" stroke-width="3"><path d="M-22-25V25M-14-25V25M-6-25V25M2-25V25M10-25V25M18-25V25"/></g><g fill="white" font-family="system-ui" font-size="16" font-weight="700"><text x="-48" y="6">S</text><text x="35" y="6">N</text></g></g><circle cx="215" cy="150" r="7" fill="#203d36"/><path d="M245 93A65 65 0 0 1 276 136" stroke="#31644f" fill="none" stroke-width="2" marker-end="url(#tech-arrow)"/><path d="M314 116H415V137M316 181H415V160" stroke="#63796d" fill="none" stroke-width="2"/><circle cx="415" cy="150" r="18" fill="#fffefa" stroke="#63796d"/><path id="tech-needle" d="M415 160V137" stroke="#c45c31" stroke-width="2.5"/><circle cx="415" cy="160" r="3" fill="#c45c31"/><text id="tech-voltage" x="415" y="205" text-anchor="middle" fill="#c45c31">−0,50</text><text x="415" y="227" text-anchor="middle" fill="#64756c">U / Û</text><path d="M204 150V272H109M227 150V285H109" fill="none" stroke="#63796d" stroke-width="1.5"/><ellipse cx="204" cy="258" rx="5" ry="8" fill="#cfa46c"/><ellipse cx="227" cy="258" rx="5" ry="8" fill="#cfa46c"/><g font-family="system-ui" font-size="12" fill="#203d36"><text x="215" y="27" text-anchor="middle">Stator: feststehende Spulen</text><text x="215" y="232" text-anchor="middle">Rotor: Elektromagnet</text><text x="380" y="105">Wechselspannung</text><text x="24" y="263">Gleichspannung</text><text x="252" y="275">Schleifkontakte</text><text x="505" y="299" text-anchor="end" font-size="14" fill="#64756c">Schema · nicht maßstäblich</text></g></svg><div class="tech-controls"><button id="tech-play" class="small" aria-pressed="true">Animation pausieren</button><p class="help">Momentaufnahme: relative Spannung U / Û. Pause friert die Darstellung ein.</p></div><p class="help">Idealisierte, gleichmäßige Drehung. Die Zeigerstellung folgt der Flussänderung; Û ist der Scheitelwert der Spannung.</p></div><div><h3>Der Rotor dreht sich. Der Stator bleibt stehen.</h3><p>Beim hier dargestellten <strong>Innenpolgenerator</strong> dreht sich ein Magnet im Inneren feststehender Spulen. Der magnetische Fluss durch die Statorspulen verändert sich: An ihren Anschlüssen entsteht Wechselspannung.</p><h3>Dauermagnet oder Elektromagnet?</h3><p>Der Rotor kann ein Dauermagnet sein. Bei vielen größeren Generatoren ist er ein Elektromagnet: Gleichstrom in der Rotorwicklung erzeugt ein im Rotor festes Magnetfeld. In einer Bauform wird die Gleichspannung über Schleifringe und Bürsten zugeführt; es gibt auch bürstenlose Erregersysteme.</p><div class="chain"><span>Mechanische Energie</span><span aria-hidden="true">→</span><span>Generator</span><span aria-hidden="true">→</span><span>Elektrische Energie</span></div><p class="help">Ein Generator erzeugt keine Energie aus dem Nichts. Wird ein Verbraucher angeschlossen, muss der Antrieb Arbeit gegen die magnetische Gegenwirkung leisten.</p></div></div></section>
+<details id="cloze-details" class="cloze-details"><summary>Lückentext zum Experiment vervollständigen</summary><p>Wähle die passenden Begriffe aus. Deine Antworten werden für jedes Experiment getrennt in diesem Browser gespeichert.</p><div id="cloze"></div><div class="actions"><button id="cloze-check" class="primary">Antworten prüfen</button><button id="cloze-solution">Lösung ansehen</button><button id="cloze-retry">Neu versuchen</button></div><p id="cloze-feedback" role="status" aria-live="polite"></p></details>
+<section class="section" id="aufgaben"><div class="section-heading"><div><div class="eyebrow">B / Weiterdenken</div><h2>Vom Generator in den Alltag.</h2><p>Formuliere zunächst eine eigene Antwort. Öffne danach den Lösungsvorschlag und ergänze deine Erklärung.</p></div></div><div class="task-grid">
+<article class="task"><div class="task-num">01</div><h3>Warum Wechselspannung?</h3><p>Warum wird im öffentlichen Stromnetz überwiegend Wechselspannung statt Gleichspannung verwendet?</p><label class="sr-only" for="answer-1">Deine Antwort: Stromnetz</label><textarea id="answer-1" placeholder="Welche Rolle spielen Transformatoren und Leitungsverluste?"></textarea><details><summary>Lösungsvorschlag</summary><div class="answer"><p>Wechselspannung lässt sich mit <strong>Transformatoren</strong> einfach auf hohe oder niedrige Spannungen umwandeln. Für die Übertragung wird die Spannung erhöht. Bei gleicher übertragener Leistung wird dadurch die Stromstärke kleiner – und mit ihr die Wärmeverluste in der Leitung.</p><p><strong>P ≈ U · I · cos φ</strong> (einphasig) und <strong>P<sub>Verlust</sub> = I² · R</strong>. Vor der Nutzung wird die Spannung wieder heruntertransformiert.</p><p>Wichtig: Wechselspannung ist nicht grundsätzlich verlustärmer als Gleichspannung. Für bestimmte lange Übertragungsstrecken und Seekabel wird auch <strong>Hochspannungs-Gleichstrom-Übertragung (HGÜ)</strong> eingesetzt. Das gewachsene Verteilnetz arbeitet überwiegend mit Wechsel- bzw. Drehstrom.</p><p class="help">Vertiefung: Quellen [2] und [3] unten.</p></div></details></article>
+<article class="task"><div class="task-num">02</div><h3>Wie wird daraus Gleichspannung?</h3><p>Viele Elektrogeräte benötigen Gleichspannung. Erläutere, wie sie aus Wechselspannung entsteht.</p><label class="sr-only" for="answer-2">Deine Antwort: Gleichrichtung</label><textarea id="answer-2" placeholder="Denke an Dioden, einen Kondensator und einen Spannungsregler."></textarea><details><summary>Lösungsvorschlag</summary><div class="answer"><p>Ein <strong>Brückengleichrichter</strong> aus vier Dioden lenkt beide Halbwellen so, dass die Ausgangsspannung dieselbe Polarität hat. Zunächst entsteht eine <strong>pulsierende Gleichspannung</strong>, noch keine konstante Spannung.</p><p>Ein <strong>Kondensator</strong> lädt sich an den Spitzen auf und überbrückt die Zwischenräume. Er glättet den Verlauf; eine Restwelligkeit bleibt. Ein <strong>Spannungsregler</strong> stabilisiert die Spannung. Ein geeignetes Netzteil übernimmt auch Spannungsanpassung und gegebenenfalls galvanische Trennung.</p><div class="rectifier"><label for="rectifier-stage">Signal ansehen:</label> <select id="rectifier-stage"><option value="ac">Wechselspannung</option><option value="rectified">Gleichgerichtet</option><option value="smooth">Geglättet</option><option value="regulated">Stabilisiert</option></select><svg viewBox="0 0 260 70" role="img" aria-label="Schematischer Spannungsverlauf der ausgewählten Umwandlungsstufe"><path d="M8 35H252" stroke="#c8d2c1"/><path id="rectifier-path" stroke="#c45c31" stroke-width="2" fill="none"/></svg></div><p class="help">Schematische Kurven, keine Schaltungssimulation. Quelle [4]. Nicht an Netzspannung experimentieren.</p></div></details></article>
+<article class="task"><div class="task-num">03</div><h3>Strom, wenn das Netz ausfällt.</h3><p>Woraus besteht ein Notstromaggregat, und welche Aufgabe haben seine wichtigsten Bauteile?</p><label class="sr-only" for="answer-3">Deine Antwort: Notstromaggregat</label><textarea id="answer-3" placeholder="Beschreibe den Weg von der Energiequelle bis zur Steckdose."></textarea><details><summary>Lösungsvorschlag</summary><div class="answer"><p>Ein klassisches Notstromaggregat besteht aus einem <strong>Verbrennungsmotor</strong> und einem gekoppelten <strong>Generator</strong>. Der Motor wandelt die chemische Energie des Kraftstoffs in Drehbewegung um. Der Generator wandelt mechanische in elektrische Energie um.</p><p>Dazu gehören Kraftstofftank, Startsystem (häufig mit Batterie), Kühlung, Abgasanlage sowie Steuerung, Spannungsregelung und elektrische Schutzeinrichtungen. Bei automatischen Anlagen ist eine geeignete Netzumschaltung nötig.</p><p><strong>Wichtig:</strong> Verbrennungsaggregate gehören wegen giftiger Abgase nicht in geschlossene Räume. Eine Einspeisung in eine Hausinstallation darf nur über fachgerecht geplante und installierte Umschalteinrichtungen erfolgen.</p><p class="help">Ein konkretes Beispiel des THW findest du in Quelle [5].</p></div></details></article>
+</div></section>
+<details class="section summary-section"><summary>Zusammenfassung zum Thema Generator</summary><div class="summary-grid"><div><h3>Das solltest du erklären können</h3><ul><li>Eine Änderung des magnetischen Flusses erzeugt eine Induktionsspannung.</li><li>Wiederholtes Hinein- und Herausbewegen oder eine geeignete Drehung des Magneten kann Wechselspannung erzeugen.</li><li>Schnellere Wiederholung erhöht die Frequenz; bei gleicher Feldstärke und Bewegungsweite steigt auch der Spannungsbetrag.</li><li>Ein Generator wandelt mechanische in elektrische Energie um.</li></ul></div><div><h3>Die wichtigsten Zusammenhänge</h3><p>U<sub>ind</sub> = −N · dΦ/dt</p><p>Bei idealisierter Rotation:<br>Φ = Φ̂ · cos(ωt) → U = N · Φ̂ · ω · sin(ωt)</p><p>ω = 2πf &nbsp; · &nbsp; T = 1/f</p><p>Die größte Spannung entsteht bei der schnellsten Flussänderung – nicht beim größten Fluss.</p></div></div></details>
+<details class="sources"><summary>Quellen &amp; zum Weiterlesen</summary><ol>
+<li><a href="https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf" target="_blank" rel="noopener noreferrer">OpenStax / Rice University: Generatoren und Induktionsgesetz (englisch)</a></li>
+<li><a href="https://www.netze-bw.de/dienstleistungskunden/strom/trafo-wiki" target="_blank" rel="noopener noreferrer">Netze BW: Transformatoren und Spannungsanpassung</a></li>
+<li><a href="https://www.dke.de/de/arbeitsfelder/core-safety/gleichstrom" target="_blank" rel="noopener noreferrer">VDE DKE: Gleichstrom – Grundlagen und Anwendungen</a></li>
+<li><a href="https://techweb.rohm.com/product/power-ic/acdc/6/" target="_blank" rel="noopener noreferrer">ROHM: Gleichrichtung und Glättung im Netzteil (englisch)</a></li>
+<li><a href="https://ov-halle.thw.de/unser-thw-ortsverband/technischer-zug/ausstattung/anhaenger-netzersatzanlage-200-kva-anh-nea-200" target="_blank" rel="noopener noreferrer">THW Halle: Netzersatzanlage mit Dieselmotor und Generator</a></li>
+</ol><p>Die Simulation und alle Grafiken wurden für diese Lernanwendung erstellt. Externe Quellen werden nur durch Anklicken geöffnet; die Anwendung selbst arbeitet offline.</p></details>
+</main><footer class="footer"><div class="footer-inner"><div>Eigenständige Lernanwendung · Fachliche Orientierung: <a href="https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf" target="_blank" rel="noopener noreferrer">OpenStax ↗</a><br>Ohne Anmeldung. Antworten bleiben in diesem Browser.<br>Matthias Krebs · Version 0.1.0 · 08.11.2026<br><a href="https://github.com/matzerak/pl_generator" target="_blank" rel="noopener noreferrer">Repository auf GitHub ↗</a></div><div class="footer-actions"><button class="textbutton" id="print-all">Arbeitsblatt drucken</button></div></div></footer>
+<noscript><p>Bitte aktiviere JavaScript für die Experimente. Die Erklärungen und Aufgaben bleiben ohne JavaScript lesbar.</p></noscript>
+<script id="physics">
+var Physics = Object.freeze({
+  flux(mode, position) {
+    return mode === 0 ? 0.001 * Math.exp(-2 * (1 - position) ** 2) : 0.001 * Math.cos(position);
+  },
+  voltage(previous, next, dt, turns = 500) {
+    return dt > 0 && next !== previous ? -turns * (next - previous) / dt : 0;
+  }
+});
+</script>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const ns = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('#apparatus,#chart,.tech-figure').forEach(image => {
+    const region = document.createElement('div'); region.className = 'diagram-scroll';
+    region.tabIndex = 0; region.setAttribute('role', 'region');
+    region.setAttribute('aria-label', 'Abbildung; auf schmalen Bildschirmen seitlich verschiebbar');
+    image.before(region); region.append(image);
+  });
+  const tau = 2 * Math.PI;
+  const fmt = (n, digits = 2) => (Math.abs(n) < .005 ? 0 : n).toFixed(digits).replace('.', ',');
+  const clamp = (v, low, high) => Math.max(low, Math.min(high, v));
+  function svg(tag, attrs, parent, text) {
+    const node = document.createElementNS(ns, tag);
+    for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+    if (text !== undefined) node.textContent = text;
+    parent.append(node); return node;
+  }
+  function pathOf(points) {
+    return points.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(2)},${p[1].toFixed(2)}`).join('');
+  }
+  const state = {mode: 0, running: false, position: 0, target: 0, phase: 0, frequency: .5, time: 0, u: 0, samples: [], lastSample: -1};
+  const texts = [
+    {title: '01 · Experiment: Den Magneten hin und her bewegen', description: 'Bewege den Stabmagneten mehrfach in die Spule hinein und wieder heraus. Beobachte den Zeiger: Wann schlägt er aus, wann wechselt er die Richtung?', tip: 'Nicht das Magnetfeld allein erzeugt eine Spannung, sondern seine Änderung. Halte den Magneten an: Was zeigt das Messgerät dann?'},
+    {title: '02 · Experiment: Den Magneten vor der Spule drehen', description: 'Lass den Stabmagneten vor der Spulenöffnung rotieren. Vergleiche die Feldlinien, den magnetischen Fluss und die Spannung. Was ist ähnlich wie im ersten Experiment?', tip: 'Blende den magnetischen Fluss ein: Bei maximalem Fluss ist die Spannung null. Beim Nulldurchgang des Flusses ändert er sich am schnellsten – die Spannung ist dann am größten.'}
+  ];
+  const noteIds = ['observation', 'answer-1', 'answer-2', 'answer-3'];
+  const storageKey = 'generator-physiklabor-v1';
+  let sketches = [[], []];
+  let savedNotes = {};
+  let clozeAnswers = [[], []];
+  let storageOK = true;
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+    if (saved && typeof saved === 'object') {
+      savedNotes = saved.notes || {};
+      if (Array.isArray(saved.cloze) && saved.cloze.length === 2) clozeAnswers = saved.cloze.map(row => Array.isArray(row) ? row.slice(0, 4).map(v => typeof v === 'string' ? v : '') : []);
+      if (Array.isArray(saved.sketches) && saved.sketches.length === 2) {
+        sketches = saved.sketches.map(list => Array.isArray(list) ? list.filter(stroke => Array.isArray(stroke) && stroke.every(p => Array.isArray(p) && p.length === 2 && p.every(Number.isFinite))).slice(-100) : []);
+      }
+    }
+  } catch { storageOK = false; }
+  function persist() {
+    const notes = Object.fromEntries(noteIds.map(id => [id, $(id).value]));
+    try { localStorage.setItem(storageKey, JSON.stringify({notes, sketches, cloze: clozeAnswers})); storageOK = true; }
+    catch { storageOK = false; }
+    $('save-status').textContent = storageOK ? 'Notizen, Skizzen und Lückentexte sind lokal in diesem Browser gespeichert.' : 'Speichern ist in diesem Browser nicht möglich. Bitte sichere deine Notizen über „Arbeitsblatt drucken“.';
+  }
+  noteIds.forEach(id => {
+    if (typeof savedNotes[id] === 'string') $(id).value = savedNotes[id];
+    $(id).addEventListener('input', persist);
+  });
+  if (!storageOK) $('save-status').textContent = 'Lokaler Speicher nicht verfügbar. Die Anwendung funktioniert trotzdem; nutze die Druckfunktion zum Sichern.';
+
+  // Trace a qualitative two-pole field once, then translate/rotate it with the magnet.
+  function fieldPaths() {
+    const paths = [];
+    for (const sign of [-1, 1]) for (const angle of [.32, .67, 1.05, 1.45, 1.9]) {
+      let x = 48 + 8 * Math.cos(angle), y = sign * 8 * Math.sin(angle);
+      const points = [[x, y]];
+      for (let step = 0; step < 650; step++) {
+        const rn = Math.hypot(x - 48, y), rs = Math.hypot(x + 48, y);
+        if (rs < 7 || Math.abs(x) > 600 || Math.abs(y) > 500) break;
+        const bx = (x - 48) / rn ** 3 - (x + 48) / rs ** 3;
+        const by = y / rn ** 3 - y / rs ** 3;
+        const b = Math.hypot(bx, by);
+        x += 2.3 * bx / b; y += 2.3 * by / b;
+        points.push([x, y]);
+      }
+      paths.push(points);
+    }
+    return paths;
+  }
+  const field = fieldPaths();
+  function drawField(parent, arrowId = 'arrow') {
+    field.forEach(points => {
+      svg('path', {d: pathOf(points)}, parent);
+      const at = Math.floor(points.length * .4);
+      svg('path', {d: pathOf(points.slice(Math.max(0, at - 2), at + 1)), 'marker-end': `url(#${arrowId})`}, parent);
+    });
+  }
+  drawField($('field-lines'));
+  for (let x = 310; x <= 422; x += 14) {
+    svg('path', {d: `M${x} 70A19 75 0 0 0 ${x} 220`}, $('coil-back'));
+    svg('path', {d: `M${x} 70A19 75 0 0 1 ${x} 220`}, $('coil-front'));
+  }
+  for (let value = -5; value <= 5; value++) {
+    const a = value / 5 * 1.25;
+    const point = r => [125 + Math.sin(a) * r, 126 - Math.cos(a) * r];
+    const p1 = point(91), p2 = point(99), label = point(113);
+    svg('path', {d: `M${p1}L${p2}`, stroke: '#7c8c7b', 'stroke-width': value % 5 === 0 ? 2 : 1}, $('meter-ticks'));
+    if (value === 0 || Math.abs(value) === 5) svg('text', {x: label[0], y: label[1] + 4, 'text-anchor': 'middle'}, $('meter-ticks'), value > 0 ? `+${value}` : String(value).replace('-', '−'));
+  }
+  const timeLabels = [];
+  for (let v = -5; v <= 5; v++) {
+    const y = 150 - 24 * v;
+    svg('path', {d: `M52 ${y}H492`, stroke: '#e5e8df', 'stroke-width': 1}, $('chart-grid'));
+    if (v % 2 === 0 || Math.abs(v) === 5) svg('text', {x: 42, y: y + 4, 'text-anchor': 'end'}, $('chart-grid'), v > 0 ? `+${v}` : String(v).replace('-', '−'));
+  }
+  for (let i = 0; i <= 5; i++) {
+    const x = 52 + i * 88;
+    svg('path', {d: `M${x} 30V270`, stroke: '#e5e8df'}, $('chart-grid'));
+    timeLabels.push(svg('text', {x, y: 285, 'text-anchor': 'middle'}, $('chart-grid'), String(i * 2)));
+  }
+  function drawApparatus() {
+    const x = state.mode === 0 ? 142 + state.position * 198 : 168;
+    const angle = state.mode === 0 ? 0 : state.position * 180 / Math.PI;
+    const transform = `translate(${x} 145) rotate(${angle})`;
+    $('magnet').setAttribute('transform', transform);
+    $('field-lines').setAttribute('transform', transform);
+    const degrees = Math.round(((state.position % tau) + tau) % tau * 180 / Math.PI);
+    const value = state.mode === 0 ? Math.round(state.position * 100) : degrees;
+    if (state.running || !manualMoving()) $('manual').value = String(value);
+    $('position-value').textContent = `${value}${state.mode === 0 ? ' %' : '°'}`;
+    $('voltage').textContent = `${fmt(state.u)} V`;
+    $('flux-value').textContent = `${fmt(Physics.flux(state.mode, state.position) * 1000)} mWb`;
+    $('needle').setAttribute('transform', `rotate(${clamp(state.u / 5, -1, 1) * 71.62} 125 126)`);
+    const moving = state.running || manualMoving();
+    $('motion-status').textContent = moving ? (state.mode ? 'Magnet rotiert' : 'Magnet bewegt sich') : 'Magnet steht';
+    $('motion-dot').classList.toggle('on', moving);
+    $('meter-note').textContent = !moving ? 'Der Magnet steht still.' : Math.abs(state.u) < .04 ? 'Momentan fast keine Flussänderung.' : state.u > 0 ? 'Positive Induktionsspannung.' : 'Negative Induktionsspannung.';
+  }
+  function drawChart() {
+    const start = Math.max(0, state.time - 10);
+    const samples = state.samples;
+    $('trace').setAttribute('d', pathOf(samples.map(p => [52 + (p.t - start) * 44, 150 - p.u * 24])));
+    $('flux-trace').setAttribute('d', pathOf(samples.map(p => [52 + (p.t - start) * 44, 150 - p.flux * 120000])));
+    const last = samples.at(-1);
+    if (last) { $('trace-dot').setAttribute('cx', 52 + (last.t - start) * 44); $('trace-dot').setAttribute('cy', 150 - last.u * 24); }
+    timeLabels.forEach((label, i) => { label.textContent = fmt(start + i * 2, start ? 1 : 0); });
+  }
+  function clearChart() {
+    state.time = 0; state.lastSample = -1;
+    state.samples = [{t: 0, u: state.u, flux: Physics.flux(state.mode, state.position)}];
+    drawChart();
+  }
+  function manualMoving() { return Math.abs(state.target - state.position) > .00001; }
+  function updatePlay() {
+    $('play').textContent = state.running ? 'Magnet anhalten' : 'Bewegung starten';
+    $('announcer').textContent = state.running ? 'Automatische Bewegung gestartet.' : 'Magnet angehalten. Die Messung läuft weiter.';
+  }
+  $('play').addEventListener('click', () => {
+    state.running = !state.running;
+    state.target = state.position;
+    if (state.running && state.mode === 0) state.phase = Math.acos(clamp(1 - 2 * state.position, -1, 1));
+    if (!state.running) state.u = 0;
+    updatePlay(); drawApparatus();
+  });
+  $('speed').addEventListener('input', () => {
+    state.frequency = Number($('speed').value);
+    $('speed-value').textContent = `${fmt(state.frequency)} Hz`;
+  });
+  function moveManually(value) {
+    state.running = false;
+    state.target = state.mode === 0 ? value / 100 : value * Math.PI / 180;
+    // Bound angular state before manually choosing an absolute angle.
+    if (state.mode === 1) state.position = ((state.position % tau) + tau) % tau;
+    updatePlay();
+    $('announcer').textContent = 'Magnet wird von Hand bewegt.';
+  }
+  $('manual').addEventListener('input', () => moveManually(Number($('manual').value)));
+  $('show-field').addEventListener('change', () => $('field-lines').toggleAttribute('hidden', !$('show-field').checked));
+  $('show-flux').addEventListener('change', () => {
+    $('flux-trace').toggleAttribute('hidden', !$('show-flux').checked);
+    $('flux-legend').hidden = !$('show-flux').checked;
+  });
+  $('clear-chart').addEventListener('click', clearChart);
+
+  function drawCards() {
+    $('field-cards').replaceChildren();
+    const cards = state.mode ? [
+      ['0°', 'Nordpol zur Spule', 'Φ maximal positiv · U = 0', 0],
+      ['90°', 'Quer zur Spule', 'Φ = 0 · U maximal positiv', Math.PI / 2],
+      ['180°', 'Südpol zur Spule', 'Φ maximal negativ · U = 0', Math.PI],
+      ['270°', 'Wieder quer', 'Φ = 0 · U maximal negativ', Math.PI * 1.5]
+    ] : [
+      ['HINEIN', 'Das Feld nimmt zu', 'Φ wächst · U negativ', .3],
+      ['UMKEHR', 'Kurz in Ruhe', 'Φ maximal · U = 0', 1],
+      ['HERAUS', 'Das Feld nimmt ab', 'Φ sinkt · U positiv', .3],
+      ['HALTEN', 'Keine Veränderung', 'Φ konstant · U = 0', .7]
+    ];
+    cards.forEach(([label, title, caption, position], i) => {
+      const card = document.createElement('div'); card.className = 'field-card';
+      const labelNode = document.createElement('div'); labelNode.className = 'state-label'; labelNode.textContent = label; card.append(labelNode);
+      const image = svg('svg', {viewBox: '0 0 230 120', role: 'img', 'aria-label': `${title}: ${caption}`}, card);
+      const defs = svg('defs', {}, image);
+      const clip = svg('clipPath', {id: `card-clip-${i}`}, defs); svg('rect', {width: 230, height: 120}, clip);
+      const clipped = svg('g', {'clip-path': `url(#card-clip-${i})`}, image);
+      const x = state.mode ? 70 : 62 + 75 * position;
+      const transform = `translate(${x} 57) rotate(${state.mode ? position * 180 / Math.PI : 0}) scale(.42)`;
+      const group = svg('g', {transform, fill: 'none', stroke: '#77927a', 'stroke-width': 1.6, opacity: .8}, clipped); drawField(group);
+      const magnet = $('magnet').cloneNode(true); magnet.removeAttribute('id'); magnet.setAttribute('transform', transform); clipped.append(magnet);
+      for (let c = 151; c <= 194; c += 8) svg('ellipse', {cx: c, cy: 57, rx: 7, ry: 35, stroke: '#b47845', 'stroke-width': 2, fill: 'none'}, image);
+      const heading = document.createElement('strong'); heading.textContent = title; card.append(heading);
+      const para = document.createElement('p'); para.textContent = caption; card.append(para);
+      $('field-cards').append(card);
+    });
+    $('field-caption').textContent = state.mode ? 'Feldlinien außen: N → S. Die angegebenen Spannungen gelten während gleichmäßiger Drehung in der gezeigten Drehrichtung. Ein angehaltener Magnet erzeugt bei jedem Winkel U = 0.' : 'Feldlinien außen: N → S. Das Vorzeichen bezieht sich auf die hier gewählte Anschlussrichtung. Entscheidend ist die Flussänderung, nicht die Position allein.';
+  }
+  function drawExample() {
+    const points = [];
+    for (let i = 0; i <= 420; i++) {
+      const phase = i / 420 * tau * 2;
+      let u;
+      if (state.mode) u = Math.sin(phase);
+      else {
+        const x = .5 - .5 * Math.cos(phase);
+        u = -4 * (1 - x) * Math.exp(-2 * (1 - x) ** 2) * .5 * Math.sin(phase) / .6;
+      }
+      points.push([45 + i / 420 * 530, 130 - u * 80]);
+    }
+    $('example-curve').setAttribute('d', pathOf(points));
+  }
+  function renderSketch() {
+    $('strokes').replaceChildren();
+    sketches[state.mode].forEach(points => svg('path', {d: pathOf(points)}, $('strokes')));
+    $('undo').disabled = !sketches[state.mode].length;
+    $('clear-sketch').disabled = !sketches[state.mode].length;
+  }
+  let drawing = false;
+  function sketchPoint(event) {
+    const p = new DOMPoint(event.clientX, event.clientY).matrixTransform($('sketch').getScreenCTM().inverse());
+    return [clamp(p.x, 45, 575), clamp(p.y, 25, 235)];
+  }
+  $('sketch').addEventListener('pointerdown', event => {
+    if (event.button !== 0 || !event.isPrimary) return;
+    event.preventDefault(); drawing = true; $('sketch').setPointerCapture(event.pointerId);
+    if (sketches[state.mode].length >= 100) sketches[state.mode].shift();
+    sketches[state.mode].push([sketchPoint(event)]); renderSketch();
+  });
+  $('sketch').addEventListener('pointermove', event => {
+    if (!drawing || !event.isPrimary) return;
+    const points = sketches[state.mode].at(-1);
+    if (points.length < 3000) points.push(sketchPoint(event));
+    $('strokes').lastChild.setAttribute('d', pathOf(points));
+  });
+  function finishDrawing() { if (drawing) {drawing = false; persist();} }
+  $('sketch').addEventListener('pointerup', finishDrawing);
+  $('sketch').addEventListener('pointercancel', finishDrawing);
+  $('sketch').addEventListener('lostpointercapture', finishDrawing);
+  $('undo').addEventListener('click', () => { sketches[state.mode].pop(); renderSketch(); persist(); });
+  $('clear-sketch').addEventListener('click', () => { sketches[state.mode] = []; renderSketch(); persist(); });
+  $('example').addEventListener('click', () => {
+    $('example-curve').toggleAttribute('hidden');
+    $('example').textContent = $('example-curve').hasAttribute('hidden') ? 'Beispielkurve einblenden' : 'Beispielkurve ausblenden';
+  });
+  function resetExperiment() {
+    Object.assign(state, {running: false, position: 0, target: 0, phase: 0, frequency: .5, u: 0});
+    $('speed').value = '.5'; $('speed-value').textContent = '0,50 Hz';
+    $('manual').value = '0'; updatePlay(); clearChart(); drawApparatus();
+  }
+  $('reset').addEventListener('click', () => {
+    resetExperiment();
+    $('show-field').checked = true; $('field-lines').removeAttribute('hidden');
+    $('show-flux').checked = false; $('flux-trace').setAttribute('hidden', ''); $('flux-legend').hidden = true;
+    $('example-curve').setAttribute('hidden', ''); $('example').textContent = 'Beispielkurve einblenden';
+    $('announcer').textContent = 'Experiment zurückgesetzt. Eigene Notizen und Skizzen bleiben erhalten.';
+  });
+  $('reset').title = 'Experiment und Anzeige zurücksetzen; eigene Notizen und Skizzen bleiben erhalten';
+  $('skizzieren').append($('cloze-details'));
+  const clozeItems = [
+    [
+      ['Beim Eintauchen des Magneten ', ['nimmt ab', 'bleibt gleich', 'nimmt zu'], 'nimmt zu', ' der magnetische Fluss durch die Spule.'],
+      ['Beim Herausziehen hat die Spannung bei gleicher Anschlussrichtung ein ', ['gleiches', 'entgegengesetztes'], 'entgegengesetztes', ' Vorzeichen.'],
+      ['Die wiederholte Hin-und-Herbewegung erzeugt eine ', ['Gleichspannung', 'Wechselspannung'], 'Wechselspannung', '.'],
+      ['Hält der Magnet still, ist die Induktionsspannung ', ['null', 'maximal'], 'null', '.']
+    ],
+    [
+      ['Beim Drehen zeigen abwechselnd ', ['nur Nordpole', 'Nord- und Südpol'], 'Nord- und Südpol', ' zur Spule.'],
+      ['Die sich wiederholende Änderung des magnetischen Flusses erzeugt ', ['Wechselspannung', 'konstante Gleichspannung'], 'Wechselspannung', '.'],
+      ['Bei maximalem Fluss ist die Spannung während idealisierter gleichmäßiger Drehung ', ['maximal', 'null'], 'null', '.'],
+      ['Dreht sich der Magnet bei sonst gleichen Bedingungen schneller, wird die Frequenz ', ['kleiner', 'größer', 'unverändert'], 'größer', '.']
+    ]
+  ];
+  function renderCloze() {
+    $('cloze').replaceChildren(); $('cloze-feedback').textContent = '';
+    clozeItems[state.mode].forEach(([before, options, answer, after], i) => {
+      const p = document.createElement('p');
+      const select = document.createElement('select');
+      select.setAttribute('aria-label', `Lücke ${i + 1}: ${before}`);
+      select.add(new Option('Bitte wählen …', ''));
+      options.forEach(text => select.add(new Option(text, text)));
+      select.value = options.includes(clozeAnswers[state.mode][i]) ? clozeAnswers[state.mode][i] : '';
+      select.addEventListener('change', () => {
+        clozeAnswers[state.mode][i] = select.value;
+        select.removeAttribute('aria-invalid'); delete select.dataset.correct;
+        $('cloze-feedback').textContent = ''; persist();
+      });
+      p.append(before, select, after); $('cloze').append(p);
+    });
+  }
+  $('cloze-check').addEventListener('click', () => {
+    let correct = 0;
+    $('cloze').querySelectorAll('select').forEach((select, i) => {
+      const valid = select.value === clozeItems[state.mode][i][2];
+      select.setAttribute('aria-invalid', String(!valid)); select.dataset.correct = String(valid);
+      if (valid) correct++;
+    });
+    $('cloze-feedback').textContent = `${correct} von 4 Antworten richtig. ${correct === 4 ? 'Alle Zusammenhänge stimmen.' : 'Prüfe die markierten Lücken noch einmal.'}`;
+  });
+  $('cloze-solution').addEventListener('click', () => {
+    clozeAnswers[state.mode] = clozeItems[state.mode].map(item => item[2]);
+    renderCloze(); persist(); $('cloze-feedback').textContent = 'Die Lösung ist eingeblendet. Erkläre die Zusammenhänge anschließend in eigenen Worten.';
+  });
+  $('cloze-retry').addEventListener('click', () => {
+    clozeAnswers[state.mode] = []; renderCloze(); persist();
+    $('cloze-feedback').textContent = 'Du kannst diesen Lückentext jetzt neu bearbeiten.';
+  });
+  $('experiment').append($('verstehen'), $('skizzieren'));
+  const technology = document.createElement('div');
+  technology.id = 'technology'; technology.setAttribute('role', 'tabpanel');
+  technology.setAttribute('aria-labelledby', 'tab-2');
+  $('labor').after(technology); technology.append($('technology-intro'), $('technik'), $('aufgaben'));
+  let activeTab = 0;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let techRunning = !reducedMotion.matches;
+  let techAngle = -Math.PI / 6;
+  function drawTechnology() {
+    const voltage = Math.sin(techAngle);
+    $('tech-rotor').setAttribute('transform', `translate(215 150) rotate(${techAngle * 180 / Math.PI})`);
+    $('tech-needle').setAttribute('transform', `rotate(${voltage * 60} 415 160)`);
+    $('tech-voltage').textContent = fmt(voltage);
+  }
+  function updateTechnologyControl() {
+    $('tech-play').textContent = techRunning ? 'Animation pausieren' : 'Animation starten';
+    $('tech-play').setAttribute('aria-pressed', String(techRunning));
+  }
+  $('tech-play').addEventListener('click', () => { techRunning = !techRunning; updateTechnologyControl(); });
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) { techRunning = false; updateTechnologyControl(); }
+  });
+  updateTechnologyControl();
+  drawTechnology();
+  function switchMode(mode) {
+    finishDrawing(); activeTab = mode;
+    for (let i = 0; i < 3; i++) { $('tab-' + i).setAttribute('aria-selected', String(i === mode)); $('tab-' + i).tabIndex = i === mode ? 0 : -1; }
+    $('experiment').hidden = mode === 2;
+    technology.hidden = mode !== 2;
+    if (mode === 2) {
+      state.running = false; state.target = state.position; state.u = 0;
+      updatePlay(); drawApparatus(); return;
+    }
+    state.mode = mode;
+    $('experiment').setAttribute('aria-labelledby', 'tab-' + mode);
+    $('experiment-title').textContent = texts[mode].title;
+    $('experiment-description').textContent = texts[mode].description;
+    $('live-tip').textContent = texts[mode].tip;
+    $('manual').max = mode ? '360' : '100';
+    $('manual-label').textContent = mode ? 'Magnet von Hand drehen' : 'Magnet von Hand bewegen';
+    $('manual-help').textContent = mode ? '0°: Nordpol zur Spule · 180°: Südpol. Auch mit Pfeiltasten.' : '0 %: außerhalb · 100 %: eingetaucht. Auch mit Pfeiltasten.';
+    $('translation-hint').toggleAttribute('hidden', mode === 1);
+    $('rotation-hint').toggleAttribute('hidden', mode === 0);
+    $('explain-translation').hidden = mode === 1; $('explain-rotation').hidden = mode === 0;
+    $('learn-title').textContent = mode ? 'Ein drehendes Feld erzeugt Wechselspannung.' : 'Eine Änderung macht den Unterschied.';
+    resetExperiment(); drawCards(); drawExample(); renderSketch(); renderCloze();
+    $('announcer').textContent = `Experiment ${mode + 1} ausgewählt.`;
+  }
+  for (let i = 0; i < 3; i++) {
+    $('tab-' + i).addEventListener('click', () => switchMode(i));
+    $('tab-' + i).addEventListener('keydown', event => {
+      if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+        event.preventDefault(); const next = event.key === 'Home' ? 0 : event.key === 'End' ? 2 : (i + (event.key === 'ArrowRight' ? 1 : 2)) % 3;
+        switchMode(next); $('tab-' + next).focus();
+      }
+    });
+  }
+  function rectifier() {
+    const stage = $('rectifier-stage').value;
+    const points = []; let capacitor = .8;
+    for (let i = 0; i <= 240; i++) {
+      const ac = Math.sin(i / 240 * tau * 3);
+      capacitor = Math.max(Math.abs(ac), capacitor * .996);
+      const value = stage === 'ac' ? ac : stage === 'rectified' ? Math.abs(ac) : stage === 'smooth' ? capacitor : .68;
+      points.push([8 + i, 35 - value * 26]);
+    }
+    $('rectifier-path').setAttribute('d', pathOf(points));
+  }
+  $('rectifier-stage').addEventListener('change', rectifier); rectifier();
+  let printState = null;
+  window.addEventListener('beforeprint', () => {
+    if (printState) return;
+    printState = [...document.querySelectorAll('details:not(.sources)')].map(el => [el, el.open]);
+    printState.forEach(([el]) => {el.open = true;});
+    noteIds.forEach(id => { const p = document.createElement('p'); p.className = 'print-value'; p.textContent = $(id).value || 'Deine Antwort: __________________________________________________'; $(id).after(p); });
+  });
+  window.addEventListener('afterprint', () => {
+    if (printState) printState.forEach(([el, open]) => {el.open = open;});
+    printState = null; document.querySelectorAll('.print-value').forEach(el => el.remove());
+  });
+  $('print-all').addEventListener('click', () => window.print());
+  let lastFrame = 0;
+  let lastRender = 0;
+  function frame(now) {
+    const dt = lastFrame ? Math.min((now - lastFrame) / 1000, .05) : 0;
+    lastFrame = now;
+    if (!document.hidden && activeTab === 2 && techRunning && !printState && dt > 0) {
+      techAngle = (techAngle + tau * .25 * dt) % tau;
+      drawTechnology();
+    }
+    if (!document.hidden && activeTab !== 2 && dt > 0) {
+      const previous = Physics.flux(state.mode, state.position);
+      if (state.running) {
+        if (state.mode === 0) {
+          state.phase = (state.phase + tau * state.frequency * dt) % tau;
+          state.position = .5 - .5 * Math.cos(state.phase);
+        } else state.position = (state.position + tau * state.frequency * dt) % tau;
+        state.target = state.position;
+      } else if (manualMoving()) {
+        const rate = state.mode ? 4 : 2;
+        state.position += clamp(state.target - state.position, -rate * dt, rate * dt);
+      }
+      const flux = Physics.flux(state.mode, state.position);
+      state.u = Physics.voltage(previous, flux, dt);
+      state.time += dt;
+      if (state.time - state.lastSample >= .025) {
+        state.samples.push({t: state.time, u: state.u, flux}); state.lastSample = state.time;
+        while (state.samples.length > 1 && state.samples[1].t < state.time - 10) state.samples.shift();
+      }
+      if (now - lastRender >= 30) { drawApparatus(); drawChart(); lastRender = now; }
+    }
+    requestAnimationFrame(frame);
+  }
+  document.addEventListener('visibilitychange', () => { lastFrame = 0; });
+  switchMode(0); requestAnimationFrame(frame);
+})();
+</script>
+</body></html>
