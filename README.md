@@ -1,3 +1,5 @@
+Webanwendung: https://matzerak.github.io/pl_generator/
+
 ## Interaktive Lernanwendung: Das Prinzip des Generators
 
 Die interaktive Webanwendung dient der Erarbeitung und Veranschaulichung des **Generatorprinzips** im Physikunterricht der Jahrgangsstufe 9. Sie knüpft an die zuvor behandelte elektromagnetische Induktion an und ermöglicht den Schülerinnen und Schülern, den Zusammenhang zwischen **Bewegung, Magnetfeld und elektrischer Spannung** eigenständig nachzuvollziehen.
